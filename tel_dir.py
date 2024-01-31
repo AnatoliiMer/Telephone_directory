@@ -70,11 +70,10 @@ def main():
             results = search_data(entries, search_string)
             print_data(results)
         elif choice == '4':
-            target_file = input("Введите название файла-приемника: ")
-            copy_data(file_name, target_file)
-            print(f'Данные экспортированы в файл {target_file}')
-            #export_data(file_name, entries)
-            #print(f'Данные экспортированы в файл {file_name}')
+            target_file = input("Введите название нового файла: ")
+            copy_data(file_name, target_file + '.txt')
+            print(f'Данные экспортированы в файл c названием - {target_file}.txt')
+            
         elif choice == '5':
             break
         else:
