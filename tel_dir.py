@@ -1,4 +1,4 @@
-def import_data(file_name):
+def import_data(file_name): #функции импорта данных из текстового файла
     entries = []
     with open(file_name, 'r') as file:
         for line in file:
@@ -7,10 +7,14 @@ def import_data(file_name):
     return entries
 
 
+def export_data(file_name, entries): #функция записи введенных данных в текстовый файл
+    with open(file_name, 'w') as file:
+        for entry in entries:
+            file.write(' '.join(entry) + '\n')
 
 
 
-def export_data(file_name, target_file):
+def copy_data(file_name, target_file): #функция экспорта данных в новый файл
     with open(file_name, 'r') as source:
         with open(target_file, 'w') as target:
             for line in source:
@@ -18,8 +22,7 @@ def export_data(file_name, target_file):
 
 
 
-
-def print_data(entries):
+def print_data(entries): #функция вывода данных 
     if len(entries) > 0:
         print('Фамилия  Имя      Отчество Номер телефона')
         print('------------------------------------------')
@@ -29,7 +32,7 @@ def print_data(entries):
         print('Нет данных для вывода')
 
 
-def search_data(entries, search_string):
+def search_data(entries, search_string): #функция поиска записей по заданному критерию
     results = []
     for entry in entries:
         if search_string.lower() in ' '.join(entry).lower():
@@ -68,7 +71,7 @@ def main():
             print_data(results)
         elif choice == '4':
             target_file = input("Введите название файла-приемника: ")
-            export_data(file_name, target_file)
+            copy_data(file_name, target_file)
             print(f'Данные экспортированы в файл {target_file}')
             #export_data(file_name, entries)
             #print(f'Данные экспортированы в файл {file_name}')
